@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - master
+jobs:
+  updateAddons:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+
+      - name: Generate zips and xmls
+        run: python ./_repo_xml_generator.py
+
+      - name: Update addons
+        run: |
+          git config --global user.name 'morpheasgr'
+          git config --global user.email 'morpheasgr@users.noreply.github.com'
+          git add -A
+          git commit -m "Update repo"
+          git push

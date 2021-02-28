@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.program.morph19wizard" name="Morph19Wizard" version="1.0.8" provider-name="Slam, BYB, Morpheas">
+<addon id="plugin.program.morph19wizard" name="Morph19Wizard" version="1.0.9" provider-name="Slam, BYB, Morpheas">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
 	</requires>

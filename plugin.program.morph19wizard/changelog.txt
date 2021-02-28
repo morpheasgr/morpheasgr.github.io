@@ -1,3 +1,5 @@
+1.0.9 - Add exclude for wizard repository to addonvar.py
+
 1.0.8 - Fix FreshStart excludes where only addon_data should be saved. Hacky approach, can be improved.
 
 1.0.7 - Fix data saving for ResolveURL, added Seren.

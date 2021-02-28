@@ -13,7 +13,7 @@ buildfile = 'https://bit.ly/3kgcpih'
 notify_url  = 'https://bit.ly/3bkK1Hp'
 
 '''#####-----Excludes-----#####'''
-EXCLUDES  = [addon_id, 'packages', 'Addons33.db', 'kodi.log']
+EXCLUDES  = [addon_id, 'packages', 'repository.morpheasgr', 'Addons33.db', 'kodi.log']
 
 translatePath = xbmcvfs.translatePath
 addon_id = xbmcaddon.Addon().getAddonInfo('id')

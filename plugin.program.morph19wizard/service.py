@@ -64,7 +64,13 @@ def save_menu():
 	
 	setting_set('firstrunSave', 'true')
 	return
-	
+
+def reload_profile(profile=None):
+    if profile is None:
+        xbmc.executebuiltin('LoadProfile(Master user)')
+    else:
+        xbmc.executebuiltin('LoadProfile({0})'.format(profile))
+
 if __name__ == '__main__':
 	try:
 		if isBase64(buildfile):
@@ -98,3 +104,5 @@ if __name__ == '__main__':
 		addonsEnable.enable_addons()
 		xbmc.executebuiltin('UpdateLocalAddons')
 		xbmc.executebuiltin('UpdateAddonRepos')
+		xbmc.executebuiltin("ReloadSkin()")
+		reload_profile(xbmc.getInfoLabel('System.ProfileName'))

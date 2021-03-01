@@ -1,3 +1,5 @@
+1.1.0 - Force ReloadProfile after enabling add-ons on first run.
+
 1.0.9 - Add exclude for wizard repository to addonvar.py
 
 1.0.8 - Fix FreshStart excludes where only addon_data should be saved. Hacky approach, can be improved.

@@ -174,7 +174,7 @@ def freshStart():
 	elif mode==9:
 		yesFresh = dialog.yesno('Full Wipe', 'Are you sure you wish to clear all data including databases and this add-on?  This action cannot be undone.', nolabel='No', yeslabel='Full wipe')
 	elif mode==3:
-	  yesFresh==True
+	  yesFresh = True
 
 	if yesFresh:
 		

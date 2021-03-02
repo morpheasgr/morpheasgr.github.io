@@ -5,6 +5,7 @@ from datetime import datetime
 from urllib.parse import parse_qs
 
 addon_id = xbmcaddon.Addon().getAddonInfo('id')
+addon_repo = 'repository.morpheasgr'
 
 '''#####-----Build File-----#####'''
 buildfile = 'https://bit.ly/3kgcpih'
@@ -13,10 +14,9 @@ buildfile = 'https://bit.ly/3kgcpih'
 notify_url  = 'https://bit.ly/3bkK1Hp'
 
 '''#####-----Excludes-----#####'''
-EXCLUDES  = [addon_id, 'packages', 'repository.morpheasgr', 'Addons33.db', 'kodi.log']
+EXCLUDES  = [addon_id, 'packages', addon_repo, 'Addons33.db', 'kodi.log']
 
 translatePath = xbmcvfs.translatePath
-addon_id = xbmcaddon.Addon().getAddonInfo('id')
 addon           = xbmcaddon.Addon(addon_id)
 addoninfo       = addon.getAddonInfo
 addon_version   = addoninfo('version')

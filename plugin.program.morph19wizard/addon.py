@@ -203,7 +203,7 @@ def freshStart():
 		elif mode==9:
 			save_check()
 			EXCLUDES.remove('Addons33.db')
-			EXCLUDES.remove('repository.morpheasgr')
+			EXCLUDES.remove(addon_repo)
 			save_move1()
 
 		dp.create(addon_name, 'Deleting files and folders...')
@@ -252,8 +252,8 @@ def freshStart():
 		    save_move2()
 		    dp.update(100, 'Deleting addon and addon data and exiting...')
 		    xbmc.sleep(1000)
-		    shutil.rmtree(os.path.join(addondata, 'plugin.program.morph19wizard'))
-		    shutil.rmtree(os.path.join(addons_path, 'plugin.program.morph19wizard'))
+		    shutil.rmtree(os.path.join(addondata, addon_id))
+		    shutil.rmtree(os.path.join(addons_path, addon_id))
 		    os._exit(1)
 		else:
 			return

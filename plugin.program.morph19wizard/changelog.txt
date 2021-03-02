@@ -1,3 +1,5 @@
+1.1.1 - Add Full Wipe option under Maintenance submenu. (Experimental)
+
 1.1.0 - Force ReloadProfile after enabling add-ons on first run.
 
 1.0.9 - Add exclude for wizard repository to addonvar.py

@@ -41,6 +41,8 @@ def subMenu_maintenance():
 	addDir('Clear Packages','',6,addon_icon,addon_fanart,local_string(30005),isFolder=False)
 	addDir('Clear Thumbnails','',7,addon_icon,addon_fanart,local_string(30008),isFolder=False)
 	addDir('Advanced Settings','',8,addon_icon,addon_fanart,local_string(30009),isFolder=False)
+	addDir('Full wipe','',9,addon_icon,addon_fanart,local_string(30010),isFolder=False)
+
 	xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 def BuildMenu():
@@ -167,7 +169,13 @@ def main(NAME, NAME2, VERSION, URL, ICON, FANART, DESCRIPTION):
 		return
 
 def freshStart():
-	yesFresh = dialog.yesno('Fresh Start', 'Are you sure you wish to clear all data?  This action cannot be undone.', nolabel='No', yeslabel='Fresh Start')
+	if mode==4:
+		yesFresh = dialog.yesno('Fresh Start', 'Are you sure you wish to clear all data?  This action cannot be undone.', nolabel='No', yeslabel='Fresh Start')
+	elif mode==9:
+		yesFresh = dialog.yesno('Full Wipe', 'Are you sure you wish to clear all data including databases and this add-on?  This action cannot be undone.', nolabel='No', yeslabel='Full wipe')
+	elif mode==3:
+	  yesFresh==True
+
 	if yesFresh:
 		
 		#Skin Switch
@@ -192,7 +200,12 @@ def freshStart():
 		if mode==4:
 			save_check()
 			save_move1()
-			
+		elif mode==9:
+			save_check()
+			EXCLUDES.remove('Addons33.db')
+			EXCLUDES.remove('repository.morpheasgr')
+			save_move1()
+
 		dp.create(addon_name, 'Deleting files and folders...')
 		xbmc.sleep(1000)
 		dp.update(30, 'Deleting files and folders...')
@@ -235,8 +248,15 @@ def freshStart():
 			addon.setSetting('buildversion', '0')
 			dialog.ok(addon_name, 'Fresh Start Complete. Click OK to Force Close Kodi.')
 			os._exit(1)
-	else:
-		return
+		elif mode == 9:
+		    save_move2()
+		    dp.update(100, 'Deleting addon and addon data and exiting...')
+		    xbmc.sleep(1000)
+		    shutil.rmtree(os.path.join(addondata, 'plugin.program.morph19wizard'))
+		    shutil.rmtree(os.path.join(addons_path, 'plugin.program.morph19wizard'))
+		    os._exit(1)
+		else:
+			return
 
 def buildInstall(NAME, NAME2, VERSION, URL):
 	zippath = os.path.join(packages + "tempfile.zip")
@@ -394,6 +414,9 @@ elif mode==7:
 elif mode==8:
 	from resources.lib.modules import maintenance
 	maintenance.advanced_settings()
+
+elif mode==9:
+	freshStart()
 
 elif mode==100:
 	from resources.lib.GUIcontrol import notify
